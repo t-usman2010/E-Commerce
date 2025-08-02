@@ -41,7 +41,4 @@ A full-stack e-commerce web application built with **React**, **Express.js**, **
 | Axios           | API Calls                         |
 | CSS             | Custom Styling                    |
 
----
-
-## 📁 Folder Structure
 

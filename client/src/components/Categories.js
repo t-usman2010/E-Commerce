@@ -2,10 +2,10 @@ import React from 'react';
 import '../styles/Categories.css';
 
 const categories = [
-  { name: 'Mobiles', image: 'https://via.placeholder.com/150?text=Mobiles' },
-  { name: 'Laptops', image: 'https://via.placeholder.com/150?text=Laptops' },
-  { name: 'Watches', image: 'https://via.placeholder.com/150?text=Watches' },
-  { name: 'Shoes', image: 'https://via.placeholder.com/150?text=Shoes' },
+  { name: 'Clothes (Men)'},
+  { name: 'Clothes (Women)'},
+  { name: 'Men Accessories'},
+  { name: 'Women Accessories'},
 ];
 
 function Categories() {
@@ -15,7 +15,6 @@ function Categories() {
       <div className="category-grid">
         {categories.map((cat, index) => (
           <div key={index} className="category-card">
-            <img src={cat.image} alt={cat.name} />
             <h3>{cat.name}</h3>
           </div>
         ))}

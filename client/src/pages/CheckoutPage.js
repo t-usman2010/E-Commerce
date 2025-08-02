@@ -66,10 +66,10 @@ function CheckoutPage() {
             {cartItems.map((item) => (
               <div key={item._id} className="checkout-item">
                 <span>{item.name}</span>
-                <span>{item.quantity} × ${item.price}</span>
+                <span>{item.quantity} × Rs{item.price}</span>
               </div>
             ))}
-            <h4>Total: ${totalPrice.toFixed(2)}</h4>
+            <h4>Total: Rs{totalPrice.toFixed(2)}</h4>
           </div>
 
           <div className="shipping-info">

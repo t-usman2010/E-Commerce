@@ -3,13 +3,13 @@ import '../styles/Hero.css';
 
 function Hero() {
   return (
-    <div className='hero'>
+    <section className='hero'>
       <div className='hero-text'>
-        <h1>Your One-Stop Shop</h1>
-        <p>Find the best products at unbeatable prices!</p>
-        <button>Shop Now</button>
+        <h1>Your One-Stop STYLE</h1>
+        <p>Discover premium fashion at unbeatable prices!</p>
+        <button className='hero-button'>Shop Now</button>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -1,7 +1,8 @@
 .homepage {
-  background: linear-gradient(to bottom right, #f5f7fa, #e4ebf5);
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4ebf5 100%);
   padding: 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
 }
 
 /* Hero Section */
@@ -10,88 +11,99 @@
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 2rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  animation: slideFade 1s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: slideFade 0.8s ease-out;
+  height: 350px;
 }
 
 .hero img {
   width: 100%;
-  height: 350px;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .hero-content {
   position: absolute;
-  top: 25%;
+  top: 50%;
   left: 8%;
+  transform: translateY(-50%);
   color: white;
-  animation: fadeInText 1.2s ease-in;
+  max-width: 600px;
+  animation: fadeInText 1s ease-out 0.3s both;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-content h1 {
-  font-size: 2.8rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
-  margin: 0;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
 }
 
 .hero-content p {
-  font-size: 1.1rem;
-  margin: 10px 0;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
 }
 
 .hero-content button {
   background-color: #2ed73d;
   color: white;
-  padding: 10px 20px;
-  font-weight: bold;
+  padding: 12px 24px;
+  font-weight: 600;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .hero-content button:hover {
   background-color: #23b132;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Category Section */
 .categories {
   background: white;
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 2rem;
   margin-bottom: 2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   text-align: center;
-  animation: popIn 1s ease-in;
+  animation: popIn 0.8s ease-out;
 }
 
 .categories h2 {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  color: #333;
 }
 
-/* 🔁 Animated Heading Underline */
+/* Animated Heading Underline */
 .categories h2.animated-heading {
   position: relative;
   display: inline-block;
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  font-weight: 700;
   color: #333;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
 }
 
 .categories h2.animated-heading::after {
   content: '';
   position: absolute;
-  left: 0;
-  bottom: -5px;
+  left: 50%;
+  bottom: 0;
   height: 3px;
-  width: 100%;
-  background-color: #2ed73d;
-
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: underline-grow 2s ease-in-out infinite;
+  width: 80%;
+  background: linear-gradient(90deg, transparent, #2ed73d, transparent);
+  transform: translateX(-50%);
+  animation: underline-grow 2.5s ease-in-out infinite;
 }
 
 /* Category List */
@@ -100,39 +112,91 @@
   justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
+  padding: 0 1rem;
 }
 
 .category-card {
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   border: 1px solid #eee;
-  border-radius: 10px;
-  width: 120px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 12px;
+  width: 140px;
+  transition: all 0.3s ease;
   background-color: #fff;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .category-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+  border-color: #2ed73d;
 }
 
 .category-card img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover img {
+  transform: scale(1.1);
 }
 
 .category-card p {
   margin: 0;
-  font-weight: bold;
+  font-weight: 600;
+  color: #444;
+  font-size: 0.9rem;
+}
+
+/* Featured Products Section */
+.featured-products {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 1200px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: popIn 0.8s ease-out;
+  text-align: center;
+}
+
+.featured-products h2 {
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  margin-bottom: 2rem;
+  color: #333;
+  position: relative;
+  display: inline-block;
+}
+
+.featured-products h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  height: 3px;
+  width: 60%;
+  background: #2ed73d;
+  transform: translateX(-50%);
+}
+
+.featured-products-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem;
 }
 
 /* Animation Keyframes */
 @keyframes slideFade {
   0% {
-    transform: translateY(-40px);
+    transform: translateY(-30px);
     opacity: 0;
   }
   100% {
@@ -143,18 +207,18 @@
 
 @keyframes fadeInText {
   0% {
-    transform: translateX(-20px);
+    transform: translateX(-30px) translateY(-50%);
     opacity: 0;
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(0) translateY(-50%);
     opacity: 1;
   }
 }
 
 @keyframes popIn {
   0% {
-    transform: scale(0.95);
+    transform: scale(0.98);
     opacity: 0;
   }
   100% {
@@ -163,41 +227,43 @@
   }
 }
 
-/* 🔁 Underline animation loop */
 @keyframes underline-grow {
   0% {
-    transform: scaleX(0);
+    width: 0%;
+    opacity: 0;
   }
   50% {
-    transform: scaleX(1);
+    width: 80%;
+    opacity: 1;
   }
   100% {
-    transform: scaleX(0);
+    width: 0%;
+    opacity: 0;
   }
 }
-/* Featured Products Section */
-.featured-products {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin: 2rem auto;
-  width: 100%;
-  max-width: 1100px; /* Controls how wide the box is */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* ✨ Soft shadow */
-  animation: popIn 1s ease-in;
-  text-align: center;
-}
 
-.featured-products h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  color: #333;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .homepage {
+    padding: 1rem;
+  }
+  
+  .hero-content {
+    left: 5%;
+    padding-right: 5%;
+  }
+  
+  .category-list {
+    gap: 1rem;
+  }
+  
+  .category-card {
+    width: 120px;
+    padding: 1rem 0.5rem;
+  font-size: 0.8rem;
+  }
+  
+  .featured-products-list {
+    gap: 1rem;
+  }
 }
-
-.featured-products-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
