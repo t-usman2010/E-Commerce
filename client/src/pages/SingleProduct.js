@@ -24,7 +24,7 @@ const SingleProduct = () => {
         <img src={product.image} alt={product.name} />
         <div className="product-info">
           <h3>{product.name}</h3>
-          <p>{product.price}</p>
+          <p>Rs: {product.price}</p>
           <p className="description">{product.description}</p>
           <button onClick={() => addToCart(product)}>Add to Cart</button>
         </div>
