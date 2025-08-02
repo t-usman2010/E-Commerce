@@ -9,7 +9,7 @@ function FeaturedProducts() {
   useEffect(() => {
     fetch('http://localhost:3001/api/products/featured')
       .then(res => res.json())
-      .then(data => setFeatured(data));
+      .then(data => setFeatured(Array.isArray(data) ? data : []));
   }, []);
 
   return (
