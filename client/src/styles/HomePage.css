@@ -1,0 +1,203 @@
+.homepage {
+  background: linear-gradient(to bottom right, #f5f7fa, #e4ebf5);
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  animation: slideFade 1s ease;
+}
+
+.hero img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.hero-content {
+  position: absolute;
+  top: 25%;
+  left: 8%;
+  color: white;
+  animation: fadeInText 1.2s ease-in;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+.hero-content button {
+  background-color: #2ed73d;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.hero-content button:hover {
+  background-color: #23b132;
+}
+
+/* Category Section */
+.categories {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  animation: popIn 1s ease-in;
+}
+
+.categories h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* 🔁 Animated Heading Underline */
+.categories h2.animated-heading {
+  position: relative;
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.categories h2.animated-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 3px;
+  width: 100%;
+  background-color: #2ed73d;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: underline-grow 2s ease-in-out infinite;
+}
+
+/* Category List */
+.category-list {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.category-card {
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  width: 120px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.category-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.category-card p {
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Animation Keyframes */
+@keyframes slideFade {
+  0% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInText {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 🔁 Underline animation loop */
+@keyframes underline-grow {
+  0% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+/* Featured Products Section */
+.featured-products {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 1100px; /* Controls how wide the box is */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* ✨ Soft shadow */
+  animation: popIn 1s ease-in;
+  text-align: center;
+}
+
+.featured-products h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.featured-products-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+

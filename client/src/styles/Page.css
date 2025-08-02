@@ -1,0 +1,130 @@
+.page-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.animated-heading {
+  font-size: 2.5rem;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 40px;
+  color: #222;
+  animation: underlineRepeat 2s infinite;
+}
+
+@keyframes underlineRepeat {
+  0% {
+    background-size: 0% 3px;
+  }
+  50% {
+    background-size: 100% 3px;
+  }
+  100% {
+    background-size: 0% 3px;
+  }
+}
+
+.animated-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  height: 3px;
+  width: 100%;
+  background: green;
+  animation: underlineRepeat 2s infinite;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  border: 1px solid #eee;
+  padding: 20px;
+  border-radius: 12px;
+  transition: 0.3s ease;
+  background: white;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.product-card button {
+  background: green;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cart-empty {
+  margin-top: 40px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.checkout-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.checkout-form button {
+  background: green;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ✅ Mobile Responsive Styles */
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .product-card {
+    width: 90%;
+    max-width: 320px;
+    margin: auto;
+  }
+
+  .product-card img {
+    height: 160px;
+  }
+
+  .animated-heading {
+    font-size: 2rem;
+  }
+
+  .page-container {
+    padding: 20px 10px;
+  }
+}
+.cart-item button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}

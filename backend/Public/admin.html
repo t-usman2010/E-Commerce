@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="admin-container">
+    <h1>Admin Dashboard</h1>
+
+    <!-- Product List -->
+    <section>
+      <h2>Product Stock</h2>
+      <table id="product-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Featured</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- Add Product -->
+    <section>
+      <h2>Add New Product</h2>
+      <form id="add-product-form">
+        <input type="text" name="name" placeholder="Product Name" required />
+        <input type="text" name="image" placeholder="Image URL" required />
+        <input type="number" name="price" placeholder="Price" required />
+        <input type="text" name="category" placeholder="Category" required />
+        <input type="number" name="stock" placeholder="Stock" required />
+        <textarea name="description" placeholder="Product Description" rows="4" required></textarea>
+        <label><input type="checkbox" name="featured" /> Mark as Featured</label>
+        <button type="submit">Add Product</button>
+      </form>
+    </section>
+
+    <!-- Orders -->
+    <section>
+      <h2>Placed Orders</h2>
+      <table id="order-table">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Phone No</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Items</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </div>
+
+  <script>
+    async function fetchData() {
+      try {
+        const [products, orders] = await Promise.all([
+          fetch('/api/products').then(res => res.json()),
+          fetch('/api/orders').then(res => res.json())
+        ]);
+
+        // Render products
+        const productBody = document.querySelector('#product-table tbody');
+        productBody.innerHTML = products.map(p => `
+          <tr>
+            <td>${p.name}</td>
+            <td>${p.price}</td>
+            <td>${p.stock}</td>
+            <td>${p.featured ? '✅' : '❌'}</td>
+            <td><button onclick="toggleFeature('${p._id}')">${p.featured ? 'Unfeature' : 'Feature'}</button></td>
+          </tr>
+        `).join('');
+
+        // Render orders
+        const orderBody = document.querySelector('#order-table tbody');
+        orderBody.innerHTML = orders.map(o => `
+          <tr>
+            <td>${o.name}</td>
+            <td>${o.phone}</td>
+            <td>${o.email}</td>
+            <td>${o.address}</td>
+            <td>${o.items.map(i => `${i.name} (x${i.quantity})`).join(', ')}</td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        alert('Error loading data.');
+        console.error(err);
+      }
+    }
+
+    async function toggleFeature(productId) {
+      await fetch(`/api/products/${productId}/feature`, { method: 'PATCH' });
+      fetchData(); // refresh table
+    }
+
+    document.getElementById('add-product-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      data.featured = formData.get('featured') === 'on';
+      data.price = Number(data.price);
+      data.stock = Number(data.stock);
+
+      await fetch('/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      form.reset();
+      fetchData();
+    });
+
+    fetchData();
+  </script>
+</body>
+</html>
